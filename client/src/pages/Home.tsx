@@ -1,8 +1,19 @@
+import Popup from "reactjs-popup"
+import 'reactjs-popup/dist/index.css'
+
 export function Home() {
     return (
-        <>
-            <h1>This is the home page</h1>
-        </>
+      <>
+        <Popup trigger={<button>+</button>} position="right center"
+          modal nested> {
+            <div>
+              Add Vehicle Information Here
+            </div>
+          }
+          <div>car_name</div>
+          <div>car_type_etc</div>
+        </Popup>
+      </>
     )
 }
 
@@ -16,4 +27,26 @@ export function Home() {
         ))}
       </div>
    </main>
+
+   <div
+      className="modal show"
+      style={{ display: 'block', position: 'initial' }}
+    >
+      <Modal.Dialog>
+        <Modal.Header closeButton>
+          <Modal.Title>Modal title</Modal.Title>
+        </Modal.Header>
+
+        <Modal.Body>
+          <p>Modal body text goes here.</p>
+        </Modal.Body>
+
+        <Modal.Footer>
+          <Button variant="secondary">Close</Button>
+          <Button variant="primary">Save changes</Button>
+        </Modal.Footer>
+      </Modal.Dialog>
+    </div>
+  );
+
 */}
