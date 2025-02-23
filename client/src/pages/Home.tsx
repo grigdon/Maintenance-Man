@@ -10,10 +10,11 @@ import { Car } from "../types/car.ts";
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const [cars, setCars] = useState<Car[]>([]);
   const { register, handleSubmit, reset, formState: {errors } } = useForm<Car>();
 
   const onSubmit: SubmitHandler<Car> = (data) => {
-    console.log(data);
+    setCars(prevCars => [...prevCars, data]);
     setMessage("Car added successfully!");
     setModalOpen(false);
     reset();
@@ -27,10 +28,27 @@ function Home() {
 
   return (
     <div className="index-container">
-      {message}
-      <button className="btn-open" onClick={() => setModalOpen(true)}>
-        Add_Car_Button
+      {message && <div className="message"> {message}</div>}
+
+      <button className="btn-add-car" onClick={() => setModalOpen(true)}>
+        Add Car
       </button>
+
+       {/* Cars Display Section */}
+       <div className="cars-grid">
+        {cars.map((car, index) => (
+          <div key={index} className="car-card">
+            <h3>{car.nickname}</h3>
+            <div className="car-details">
+              <p><strong>{car.year} {car.make} {car.model}</strong></p>
+              <p>Trim: {car.trim}</p>
+              <p>Engine: {car.engine}</p>
+              <p>Transmission: {car.transmission}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+
       {modalOpen &&
         createPortal(
           <Modal 
