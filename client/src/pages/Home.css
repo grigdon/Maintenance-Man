@@ -73,6 +73,10 @@ label {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
+.car-card:hover {
+  background-color: #ddd;
+}
+
 .car-card h3 {
   margin-top: 0;
   color: #333;

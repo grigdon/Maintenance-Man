@@ -6,8 +6,10 @@ import "./Home.css"
 import "../index.css"
 import "../types/car.ts"
 import { Car } from "../types/car.ts";
+import { useNavigate } from "react-router-dom";
 
 function Home() {
+  const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [cars, setCars] = useState<Car[]>([]);
@@ -24,7 +26,11 @@ function Home() {
     setModalOpen(false);
     setMessage(message);
     reset();
-  }
+  };
+
+  const handleCarClick = (car : Car) => {
+    navigate('/car/${car.nickname}/maintenance');
+  };
 
   return (
     <div className="index-container">
@@ -37,7 +43,12 @@ function Home() {
        {/* Cars Display Section */}
        <div className="cars-grid">
         {cars.map((car, index) => (
-          <div key={index} className="car-card">
+          <div
+            key={index} 
+            className="car-card"
+            onClick={() => handleCarClick(car)}
+            style={{ cursor: 'pointer'}}
+           >
             <h3>{car.nickname}</h3>
             <div className="car-details">
               <p><strong>{car.year} {car.make} {car.model}</strong></p>
