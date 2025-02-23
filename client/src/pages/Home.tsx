@@ -1,17 +1,29 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { createPortal } from "react-dom";
+import { useForm, SubmitHandler } from "react-hook-form";
 import { Modal } from "../components/Modal";
 import "./Home.css"
 import "../index.css"
+import "../types/car.ts"
+import { Car } from "../types/car.ts";
 
 function Home() {
   const [modalOpen, setModalOpen] = useState(false);
   const [message, setMessage] = useState("");
+  const { register, handleSubmit, reset, formState: {errors } } = useForm<Car>();
 
-  const handleButtonClick = (value: string) => {
+  const onSubmit: SubmitHandler<Car> = (data) => {
+    console.log(data);
+    setMessage("Car added successfully!");
     setModalOpen(false);
-    setMessage(value);
+    reset();
   };
+
+  const handleCancel = (message: string) => {
+    setModalOpen(false);
+    setMessage(message);
+    reset();
+  }
 
   return (
     <div className="index-container">
@@ -22,12 +34,92 @@ function Home() {
       {modalOpen &&
         createPortal(
           <Modal 
-            onSubmit={handleButtonClick}
-            onCancel={handleButtonClick}
-            onClose={handleButtonClick}
+            onSubmit={() => handleSubmit(onSubmit)()}
+            onCancel={handleCancel}
+            onClose={() => {
+              setModalOpen(false);
+              reset();
+            }}
           >
-            <h1>Form to add a car</h1>
-            <p>the form will go here</p>
+            <div className="form-container">
+              <h2>Sign up your vehicle here.</h2>
+              <form onSubmit={handleSubmit(onSubmit)} className="car-form">
+                <div className="form-group">
+                  <label htmlFor="nickname">Nickname</label>
+                  <input
+                    id="nickname"
+                    {...register("nickname", { required: "Nickname is required" })}
+                    className="form-input"
+                  />
+                  {errors.nickname && <span className="error">{errors.nickname.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="year">Year</label>
+                  <input
+                    id="year"
+                    type="number"
+                    {...register("year", { 
+                      required: "Year is required",
+                      min: { value: 1886, message: "Year must be 1886 or later" },
+                      max: { value: 2025, message: "Year cannot be in the future" }
+                    })}
+                    className="form-input"
+                  />
+                  {errors.year && <span className="error">{errors.year.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="make">Make</label>
+                  <input
+                    id="make"
+                    {...register("make", { required: "Make is required" })}
+                    className="form-input"
+                  />
+                  {errors.make && <span className="error">{errors.make.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="model">Model</label>
+                  <input
+                    id="model"
+                    {...register("model", { required: "Model is required" })}
+                    className="form-input"
+                  />
+                  {errors.model && <span className="error">{errors.model.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="trim">Trim</label>
+                  <input
+                    id="trim"
+                    {...register("trim", { required: "Trim is required" })}
+                    className="form-input"
+                  />
+                  {errors.trim && <span className="error">{errors.trim.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="engine">Engine</label>
+                  <input
+                    id="engine"
+                    {...register("engine", { required: "Engine is required" })}
+                    className="form-input"
+                  />
+                  {errors.engine && <span className="error">{errors.engine.message}</span>}
+                </div>
+
+                <div className="form-group">
+                  <label htmlFor="transmission">Transmission</label>
+                  <input
+                    id="transmission"
+                    {...register("transmission", { required: "Transmission is required" })}
+                    className="form-input"
+                  />
+                  {errors.transmission && <span className="error">{errors.transmission.message}</span>}
+                </div>
+              </form>
+            </div>
           </Modal>,
           document.body
         )}

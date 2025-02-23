@@ -1,4 +1,10 @@
 export interface Car {
     id: number;
-    name: string;
+    nickname: string;
+    year: number;
+    make: string;
+    model: string;
+    trim: string;
+    engine: string;
+    transmission: string;
 } 

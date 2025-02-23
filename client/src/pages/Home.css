@@ -11,3 +11,35 @@
 .btn-open {
     background-color: #1d4ed8;
 }
+
+.form-container {
+    padding: 20px;
+  }
+  
+  .car-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .form-input {
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+  
+  .error {
+    color: red;
+    font-size: 14px;
+  }
+  
+  label {
+    font-weight: 500;
+  }
