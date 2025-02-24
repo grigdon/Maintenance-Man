@@ -28,7 +28,7 @@ export const Modal: React.FC<ModalProps> = ({ onSubmit, onCancel, onClose, child
           <button className="btn-submit" onClick={() => onSubmit("The submit button was clicked")}>
             Add
           </button>
-          <button className="btn-cancel" onClick={() => onCancel("The cancel button was clicked")}>
+          <button className="btn-cancel" onClick={() => onClose("")}>
             Cancel
           </button>
         </div>
