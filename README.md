@@ -61,7 +61,7 @@ Backend (ASP.NET)
     Open your IDE (Visual Studio or Rider).
     Open the "api" folder in the project directory.
     Press Run (green play button) to start the backend.
-    If successful, it will launch a Swagger Web API suite with a demo weatherforecast API.
+    If successful, it will launch a Swagger Web API.
 
 Next Steps
 
