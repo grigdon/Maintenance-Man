@@ -1,9 +1,12 @@
+/* Font import */
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@500&family=Montserrat:wght@600&display=swap');
+
 .navbar {
     width: 100%;
     display: flex;
     align-items: center;
     padding: 1rem 5%;
-    background-color: #889696;
+    background: linear-gradient(135deg, #5E6E6E, #889696);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
     justify-content: space-between; 
 }
@@ -13,6 +16,25 @@
     height: 2.5rem;
     cursor: pointer;
     object-fit: contain;
+}
+
+.nav-title {
+    font-size: 28px;
+    font-weight: bold;
+    font-family: 'Oswald', sans-serif;
+    color: black;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    position: relative;
+    top: -8px;  /* Aligns title with logo */
+    left: 10px; 
+}
+
+.nav-title:hover {
+    color: black;
+    transform: scale(1.05);
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.6), 0px 0px 20px rgba(255, 255, 255, 0.4); /* Adds white glow */
 }
 
 .btn-container {
@@ -27,6 +49,7 @@
     background-color: #2d3436;
     color: #ffffff;
     font-size: 0.875rem;
+    font-family: 'Oswald', sans-serif;
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -35,7 +58,10 @@
 }
 
 .btn-navbar:hover {
-    background-color: #636e72;
+    background-color: #34495e;
+    transform: translateY(-2px);  /* Lifts the buttons */
 }
+
+
 
 
