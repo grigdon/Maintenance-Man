@@ -7,6 +7,7 @@ import "../index.css"
 import "../types/car.ts"
 import { Car } from "../types/car.ts";
 import { useNavigate } from "react-router-dom";
+import { Heatmap } from "../components/Heatmap.tsx";
 
 function Home() {
   const navigate = useNavigate();
@@ -152,6 +153,18 @@ function Home() {
           </Modal>,
           document.body
         )}
+
+
+
+
+        <div className="heatmap-container">
+          <Heatmap/>
+        </div>
+
+
+
+
+        
     </div>
   );
 }
