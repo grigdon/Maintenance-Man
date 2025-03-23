@@ -91,6 +91,4 @@ export function CarProfile() {
     );
 }
 
-
-
 export default CarProfile;

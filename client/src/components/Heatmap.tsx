@@ -5,14 +5,17 @@ export function Heatmap() {
 
     return (
         <CalendarHeatmap
-        startDate={new Date('2016-01-01')}
-        endDate={new Date('2016-04-01')}
-        values={[
-            { date: '2016-01-01', count: 12 },
-            { date: '2016-01-22', count: 122 },
-            { date: '2016-01-30', count: 38 },
-            // ...and so on
-        ]}
+            startDate={new Date('2025-03-01')}
+            endDate={new Date('2025-12-31')}
+
+            // dummy data
+            
+            values={[
+                { date: '2025-3-01', count: 5 },
+                { date: '2025-3-05', count: 100 },
+                { date: '2025-3-25', count: 50 },
+                { date: '2025-3-28', count: 175}
+            ]}
         />
     )
 }

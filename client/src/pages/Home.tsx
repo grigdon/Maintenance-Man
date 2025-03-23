@@ -1,20 +1,29 @@
 import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { Modal } from "../components/Modal";
-import "../pages_css/Home.css"
-import "../index.css"
-import "../types/car.ts"
-import { Car } from "../types/car.ts";
 import { useNavigate } from "react-router-dom";
+
+import { Modal } from "../components/Modal";
 import { Heatmap } from "../components/Heatmap.tsx";
+import { Car } from "../types/car.ts";
+
+import "../pages_css/Home.css";
+import "../index.css";
+import "../types/car.ts";
+import plusIcon from "../../src/assets/square-plus-regular.svg";
 
 function Home() {
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
   const [message, setMessage] = useState("");
   const [cars, setCars] = useState<Car[]>([]);
-  const { register, handleSubmit, reset, formState: {errors } } = useForm<Car>();
+  
+  const { 
+    register, 
+    handleSubmit, 
+    reset, 
+    formState: { errors } 
+  } = useForm<Car>();
 
   const onSubmit: SubmitHandler<Car> = (data) => {
     setCars(prevCars => [...prevCars, data]);
@@ -29,27 +38,27 @@ function Home() {
     reset();
   };
 
-  const handleCarClick = (car : Car) => {
-    navigate('/car/${car.nickname}/maintenance');
+  const handleCarClick = (car: Car) => {
+    navigate(`/car/${car.nickname}/maintenance`);
   };
 
   return (
     <div className="index-container">
-      {message && <div className="message"> {message}</div>}
+      {message && <div className="message">{message}</div>}
 
       <button className="btn-add-car" onClick={() => setModalOpen(true)}>
-        Add Car
+        <img className="car-image" src={plusIcon} alt="Add Car" />
       </button>
 
-       {/* Cars Display Section */}
-       <div className="cars-grid">
+      {/* Cars Display Section */}
+      <div className="cars-grid">
         {cars.map((car, index) => (
           <div
-            key={index} 
+            key={index}
             className="car-card"
             onClick={() => handleCarClick(car)}
-            style={{ cursor: 'pointer'}}
-           >
+            style={{ cursor: 'pointer' }}
+          >
             <h3>{car.nickname}</h3>
             <div className="car-details">
               <p><strong>{car.year} {car.make} {car.model}</strong></p>
@@ -63,7 +72,7 @@ function Home() {
 
       {modalOpen &&
         createPortal(
-          <Modal 
+          <Modal
             onSubmit={() => handleSubmit(onSubmit)()}
             onCancel={handleCancel}
             onClose={() => {
@@ -89,7 +98,7 @@ function Home() {
                   <input
                     id="year"
                     type="number"
-                    {...register("year", { 
+                    {...register("year", {
                       required: "Year is required",
                       min: { value: 1886, message: "Year must be 1886 or later" },
                       max: { value: 2025, message: "Year cannot be in the future" }
@@ -152,19 +161,27 @@ function Home() {
             </div>
           </Modal>,
           document.body
-        )}
+        )
+      }
 
-
-
-
-        <div className="heatmap-container">
-          <Heatmap/>
+      <div className="tile-row">
+        <div className="tile">
+          <img src="image1.jpg" alt="Image 1" />
         </div>
+        <div className="tile">
+          <img src="image2.jpg" alt="Image 2" />
+        </div>
+        <div className="tile">
+          <img src="image3.jpg" alt="Image 3" />
+        </div>
+        <div className="tile">
+          <img src="image4.jpg" alt="Image 4" />
+        </div>
+      </div>
 
-
-
-
-        
+      <div className="heatmap-container">
+        <Heatmap />
+      </div>
     </div>
   );
 }
