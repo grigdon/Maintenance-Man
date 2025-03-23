@@ -1,5 +1,4 @@
-import React from "react";
-import "../pages/UserProfile.css";
+import "../pages_css/UserProfile.css";
 import { Car } from "../types/car";
 
 // Placeholder user data 

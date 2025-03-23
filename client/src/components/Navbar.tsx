@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import "./Navbar.css";
+import "../components_css/Navbar.css";
 import car from "../../src/assets/car-image.png";
 
 // Static navigation bar with routing to other pages, cojoined with 'Layout'

@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Modal } from "../components/Modal";
 import { useParams } from "react-router-dom";
 import { Maintenance } from "../types/maintenance.ts";
-import "./CarProfile.css";
+import "../pages_css/CarProfile.css";
 
 export function CarProfile() {
     const { nickname } = useParams<{ nickname: string }>(); 

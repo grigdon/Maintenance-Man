@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { createPortal } from "react-dom";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Modal } from "../components/Modal";
-import "./Home.css"
+import "../pages_css/Home.css"
 import "../index.css"
 import "../types/car.ts"
 import { Car } from "../types/car.ts";
