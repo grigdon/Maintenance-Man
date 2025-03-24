@@ -8,7 +8,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Database/CarsFakeFileBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Database/UsersFakeFileBase.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Enterprise/CarEC.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Models/Car.cs" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Models/User.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.http" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,28 +49,31 @@
   &quot;associatedIndex&quot;: 4
 }</component>
   <component name="ProjectId" id="2tB3l4qTHXqfax2GnfFAfeZBeUb" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    ".NET Launch Settings Profile.CarMaintenance.Api: http.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "increment-2",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
-    "ts.external.directory.path": "C:\\Users\\Joab\\Documents\\Maintenance-Man\\client\\node_modules\\typescript\\lib",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;.NET Launch Settings Profile.CarMaintenance.Api: http.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;increment-2&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
+    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Joab\\Documents\\Maintenance-Man\\client\\node_modules\\typescript\\lib&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CarMaintenance.Api: http">
     <configuration name="CarMaintenance.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" />
@@ -121,6 +133,9 @@
       <workItem from="1740344619523" duration="11790000" />
       <workItem from="1742589253071" duration="284000" />
       <workItem from="1742589557285" duration="1547000" />
+      <workItem from="1742762613238" duration="2272000" />
+      <workItem from="1742781466862" duration="2005000" />
+      <workItem from="1742783934919" duration="1123000" />
     </task>
     <servers />
   </component>
