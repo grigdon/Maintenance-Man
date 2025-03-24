@@ -1,189 +1,91 @@
 import { useState } from "react";
-import { createPortal } from "react-dom";
-import { useForm, SubmitHandler } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-
-import { Modal } from "../components/Modal";
-import { Heatmap } from "../components/Heatmap.tsx";
+import { AddCarModal } from "../components/AddCarModal"; 
 import { Car } from "../types/car.ts";
-
+import { Heatmap } from "../components/Heatmap.tsx"; 
 import "../pages_css/Home.css";
 import "../index.css";
-import "../types/car.ts";
 import plusIcon from "../../src/assets/square-plus-regular.svg";
 
 function Home() {
-  const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  const [message, setMessage] = useState("");
-  const [cars, setCars] = useState<Car[]>([]);
-  
-  const { 
-    register, 
-    handleSubmit, 
-    reset, 
-    formState: { errors } 
-  } = useForm<Car>();
+    const navigate = useNavigate();
+    const [modalOpen, setModalOpen] = useState(false);
+    const [message, setMessage] = useState("");
+    const [cars, setCars] = useState<Car[]>([]);
 
-  const onSubmit: SubmitHandler<Car> = (data) => {
-    setCars(prevCars => [...prevCars, data]);
-    setMessage("Car added successfully!");
-    setModalOpen(false);
-    reset();
-  };
+    const onSubmit = (data: Car) => {
+        setCars((prevCars) => [...prevCars, data]);
+        setMessage("Car added successfully!");
+        setModalOpen(false);
+    };
 
-  const handleCancel = (message: string) => {
-    setModalOpen(false);
-    setMessage(message);
-    reset();
-  };
+    const handleCancel = (message: string) => {
+        setModalOpen(false);
+        setMessage(message);
+    };
 
-  const handleCarClick = (car: Car) => {
-    navigate(`/car/${car.nickname}/maintenance`);
-  };
+    const handleCarClick = (car: Car) => {
+        navigate(`/car/${car.nickname}/maintenance`);
+    };
 
-  return (
-    <div className="index-container">
-      {message && <div className="message">{message}</div>}
+    return (
+        <div className="index-container">
+            {message && <div className="message">{message}</div>}
 
-      <button className="btn-add-car" onClick={() => setModalOpen(true)}>
-        <img className="car-image" src={plusIcon} alt="Add Car" />
-      </button>
+            <button className="btn-add-car" onClick={() => setModalOpen(true)}>
+                <img className="car-image" src={plusIcon} alt="Add Car" />
+            </button>
 
-      {/* Cars Display Section */}
-      <div className="cars-grid">
-        {cars.map((car, index) => (
-          <div
-            key={index}
-            className="car-card"
-            onClick={() => handleCarClick(car)}
-            style={{ cursor: 'pointer' }}
-          >
-            <h3>{car.nickname}</h3>
-            <div className="car-details">
-              <p><strong>{car.year} {car.make} {car.model}</strong></p>
-              <p>Trim: {car.trim}</p>
-              <p>Engine: {car.engine}</p>
-              <p>Transmission: {car.transmission}</p>
+            {/* Cars Display Section */}
+            <div className="cars-grid">
+                {cars.map((car, index) => (
+                    <div
+                        key={index}
+                        className="car-card"
+                        onClick={() => handleCarClick(car)}
+                        style={{ cursor: 'pointer' }}
+                    >
+                        <h3>{car.nickname}</h3>
+                        <div className="car-details">
+                            <p><strong>{car.year} {car.make} {car.model}</strong></p>
+                            <p>Trim: {car.trim}</p>
+                            <p>Engine: {car.engine}</p>
+                            <p>Transmission: {car.transmission}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
-          </div>
-        ))}
-      </div>
 
-      {modalOpen &&
-        createPortal(
-          <Modal
-            onSubmit={() => handleSubmit(onSubmit)()}
-            onCancel={handleCancel}
-            onClose={() => {
-              setModalOpen(false);
-              reset();
-            }}
-          >
-            <div className="form-container">
-              <h2>Sign up your vehicle here.</h2>
-              <form onSubmit={handleSubmit(onSubmit)} className="car-form">
-                <div className="form-group">
-                  <label htmlFor="nickname">Nickname</label>
-                  <input
-                    id="nickname"
-                    {...register("nickname", { required: "Nickname is required" })}
-                    className="form-input"
-                  />
-                  {errors.nickname && <span className="error">{errors.nickname.message}</span>}
-                </div>
+            <AddCarModal
+                isOpen={modalOpen}
+                onSubmit={onSubmit}
+                onCancel={handleCancel}
+                onClose={() => {
+                    setModalOpen(false);
+                }}
+            />
 
-                <div className="form-group">
-                  <label htmlFor="year">Year</label>
-                  <input
-                    id="year"
-                    type="number"
-                    {...register("year", {
-                      required: "Year is required",
-                      min: { value: 1886, message: "Year must be 1886 or later" },
-                      max: { value: 2025, message: "Year cannot be in the future" }
-                    })}
-                    className="form-input"
-                  />
-                  {errors.year && <span className="error">{errors.year.message}</span>}
+            <div className="tile-row">
+                <div className="tile">
+                    <img src="image1.jpg" alt="Image 1" />
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="make">Make</label>
-                  <input
-                    id="make"
-                    {...register("make", { required: "Make is required" })}
-                    className="form-input"
-                  />
-                  {errors.make && <span className="error">{errors.make.message}</span>}
+                <div className="tile">
+                    <img src="image2.jpg" alt="Image 2" />
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="model">Model</label>
-                  <input
-                    id="model"
-                    {...register("model", { required: "Model is required" })}
-                    className="form-input"
-                  />
-                  {errors.model && <span className="error">{errors.model.message}</span>}
+                <div className="tile">
+                    <img src="image3.jpg" alt="Image 3" />
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="trim">Trim</label>
-                  <input
-                    id="trim"
-                    {...register("trim", { required: "Trim is required" })}
-                    className="form-input"
-                  />
-                  {errors.trim && <span className="error">{errors.trim.message}</span>}
+                <div className="tile">
+                    <img src="image4.jpg" alt="Image 4" />
                 </div>
-
-                <div className="form-group">
-                  <label htmlFor="engine">Engine</label>
-                  <input
-                    id="engine"
-                    {...register("engine", { required: "Engine is required" })}
-                    className="form-input"
-                  />
-                  {errors.engine && <span className="error">{errors.engine.message}</span>}
-                </div>
-
-                <div className="form-group">
-                  <label htmlFor="transmission">Transmission</label>
-                  <input
-                    id="transmission"
-                    {...register("transmission", { required: "Transmission is required" })}
-                    className="form-input"
-                  />
-                  {errors.transmission && <span className="error">{errors.transmission.message}</span>}
-                </div>
-              </form>
             </div>
-          </Modal>,
-          document.body
-        )
-      }
-
-      <div className="tile-row">
-        <div className="tile">
-          <img src="image1.jpg" alt="Image 1" />
+            
+            <div className="heatmap-container">
+                <Heatmap /> 
+            </div>
         </div>
-        <div className="tile">
-          <img src="image2.jpg" alt="Image 2" />
-        </div>
-        <div className="tile">
-          <img src="image3.jpg" alt="Image 3" />
-        </div>
-        <div className="tile">
-          <img src="image4.jpg" alt="Image 4" />
-        </div>
-      </div>
-
-      <div className="heatmap-container">
-        <Heatmap />
-      </div>
-    </div>
-  );
+    );
 }
 
 export default Home;
+
