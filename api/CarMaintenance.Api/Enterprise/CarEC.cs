@@ -3,6 +3,10 @@ using CarMaintenance.Api.Models;
 
 namespace CarMaintenance.Api.Enterprise
 {
+    // Enterprise controller
+    // Acts as a middle-man between the database and the controller
+    // Provides readonly data-organizing functions for the controller
+    // Makes API calls in the controller simpler
     public class CarEC
     {
         private readonly CarsFakeFileBase _filebase;
@@ -11,59 +15,66 @@ namespace CarMaintenance.Api.Enterprise
         {
             _filebase = CarsFakeFileBase.Current;
         }
-        
-        public IEnumerable<Car> Cars 
+
+        public IEnumerable<Car> Cars
         {
-            get
-            {
-                return _filebase.cars.Take(100).Select(c => new Car(c));
-            }
+            get { return _filebase.Cars.Take(100).Select(c => new Car(c)); }
+        }
         
-       
-            public IEnumerable<PatientDTO> Patients
-            {
-                get
+        // search for a car in the list of cars by object member variables in set:= {year, make, model, engine, transmission}
+        public IEnumerable<Car> Search(string query)
+        {
+            string upperQuery = query?.ToUpper() ?? string.Empty;
+            
+            return _filebase.Cars
+                .Where(c => c.Year.ToString().Contains(upperQuery) ||
+                                c.Make.ToUpper().Contains(upperQuery) ||
+                                c.Model.ToUpper().Contains(upperQuery) ||
+                                c.Engine.ToUpper().Contains(upperQuery) ||
+                                c.Transmission.ToUpper().Contains(upperQuery))
+                .Select(c => new Car
                 {
-                    return _filebase.Patients.Take(100).Select(p => new PatientDTO(p));
-                }
-            }
-            public IEnumerable<PatientDTO>? Search(string query)
+                    Id = c.Id,
+                    Year = c.Year,
+                    Make = c.Make,
+                    Model = c.Model
+                })
+                .ToList();
+        }
+
+        public Car GetById(int id)
+        {
+            var car = _filebase
+                .Cars
+                .FirstOrDefault(c => c.Id == id);
+            if (car != null)
             {
-                return _filebase.Patients
-                    .Where(p => p.Name.ToUpper()
-                        .Contains(query?.ToUpper() ?? string.Empty))
-                    .Select(p => new PatientDTO(p));
+                return new Car(car);
             }
-            public PatientDTO? GetById(int id)
+            
+            return null;
+        }
+
+        public Car? DeleteById(int id)
+        {
+            var car = _filebase.Cars.FirstOrDefault(c => c.Id == id);
+            if (car != null)
             {
-                var patient = _filebase
-                    .Patients
-                    .FirstOrDefault(p => p.Id == id);
-                if(patient != null)
-                {
-                    return new PatientDTO(patient);
-                }
+                _filebase.Cars.Remove(car);
+                return new Car(car);
+            }
+
+            return null;
+        }
+
+        public Car? AddOrUpdate(Car? car)
+        {
+            if (car != null)
+            {
                 return null;
             }
-            public PatientDTO? DeleteById(int id)
-            {
-                var patientToDelete = _filebase.Patients.FirstOrDefault(p => p.Id == id);
-                if(patientToDelete != null)
-                {
-                    _filebase.Patients.Remove(patientToDelete);
-                    return new PatientDTO(patientToDelete);
-                }
-                return null;
-            }
-            public Patient? AddOrUpdate(PatientDTO? patient)
-            {
-                if(patient == null)
-                {
-                    return null;
-                }
-                return _filebase.AddOrUpdatePatient(new Patient(patient));
-            }
+
+            return _filebase.AddOrUpdateCar(new Car(car));
         }
     }
 }
-
