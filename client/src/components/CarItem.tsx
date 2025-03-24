@@ -1,4 +1,4 @@
-import { Car } from "../types/car"
+import { Car } from "../types/Car"
 
 interface CarItemProps {
     car: Car;

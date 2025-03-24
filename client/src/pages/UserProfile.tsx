@@ -1,5 +1,5 @@
 import "../pages_css/UserProfile.css";
-import { Car } from "../types/car";
+import { Car } from "../types/Car";
 
 // Placeholder user data 
 const user = {

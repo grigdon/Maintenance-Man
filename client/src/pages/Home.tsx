@@ -1,10 +1,21 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+<<<<<<< HEAD
 import { AddCarModal } from "../components/AddCarModal"; 
 import { Car } from "../types/car.ts";
 import { Heatmap } from "../components/Heatmap.tsx"; 
 import "../pages_css/Home.css";
 import "../index.css";
+=======
+
+import { Modal } from "../components/Modal";
+import { Heatmap } from "../components/Heatmap.tsx";
+import { Car } from "../types/Car.ts";
+
+import "../pages_css/Home.css";
+import "../index.css";
+import "../types/Car.ts";
+>>>>>>> 02360ac (Closed #39 - added API service layer to client level)
 import plusIcon from "../../src/assets/square-plus-regular.svg";
 
 function Home() {
