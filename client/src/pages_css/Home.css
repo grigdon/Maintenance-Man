@@ -184,51 +184,7 @@ label {
   font-size: 0.875rem;
 }
 
-/* Cars grid */
-.cars-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 1rem;
-  width: 100%;
-}
-
-.car-card {
-  border: 1px solid var(--color-border-primary);
-  border-radius: 6px;
-  padding: 1rem;
-  background-color: var(--color-bg-overlay);
-  transition: border-color 0.2s ease, transform 0.2s ease;
-}
-
-.car-card:hover {
-  border-color: var(--color-scale-blue-5);
-  transform: translateY(-2px);
-}
-
-.car-card h3 {
-  margin-bottom: 0.75rem;
-  color: var(--color-text-primary);
-  font-size: 1rem;
-  font-weight: 600;
-}
-
-.car-details {
-  display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
-}
-
-.car-details p {
-  color: var(--color-text-secondary);
-  font-size: 0.875rem;
-}
-
-.car-details p strong {
-  color: var(--color-text-primary);
-  font-weight: 600;
-}
-
-/* Tile row */
+/* Tile row styles */
 .tile-row {
   display: flex;
   flex-wrap: wrap;
@@ -244,18 +200,47 @@ label {
   flex: 1;
   min-width: 200px;
   background-color: var(--color-bg-inset);
-  padding: 1rem;
   border-radius: 6px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   border: 1px solid var(--color-border-secondary);
+  transition: border-color 0.2s ease, transform 0.2s ease;
+  cursor: pointer;
+}
+
+.tile:hover {
+  border-color: var(--color-scale-blue-5);
+  transform: translateY(-2px);
 }
 
 .tile img {
   width: 100%;
   height: auto;
   border-radius: 3px;
+}
+
+/* Car tile specific styles */
+.tile h3 {
+  margin-bottom: 0.75rem;
+  color: var(--color-text-primary);
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 1rem 1rem 0;
+}
+
+.tile .car-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0 1rem 1rem;
+}
+
+.tile .car-details p {
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+}
+
+.tile .car-details p strong {
+  color: var(--color-text-primary);
+  font-weight: 600;
 }
 
 /* Heatmap container */
