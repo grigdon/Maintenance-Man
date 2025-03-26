@@ -31,11 +31,6 @@ export function Navbar() {
                         </button>
                     </Link>
                 </div>
-                <div>
-                    <Link to="/login">
-                        <button className="btn-navbar">Login</button>
-                    </Link>
-                </div>
             </div>
         </div>
     );
