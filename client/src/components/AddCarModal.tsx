@@ -2,6 +2,7 @@ import React from "react";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { Modal } from "../components/Modal";
 import { Car } from "../types/Car.ts";
+import "../components_css/Modal.css"
 
 interface AddCarModalProps {
     isOpen: boolean;
