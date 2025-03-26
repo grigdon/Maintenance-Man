@@ -16,7 +16,6 @@ export function Navbar() {
                     </button>
                 </Link>
             </div>
-
             <div className='btn-container'>
                 <div>
                     <Link to="https://github.com/grigdon/Maintenance-Man">
@@ -30,6 +29,11 @@ export function Navbar() {
                         <button className="btn-navbar">
                             <img className="image" src={userIcon} alt="User Logo"/>
                         </button>
+                    </Link>
+                </div>
+                <div>
+                    <Link to="/login">
+                        <button className="btn-navbar">Login</button>
                     </Link>
                 </div>
             </div>

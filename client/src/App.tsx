@@ -4,6 +4,7 @@ import { CarProfile  } from './pages/CarProfile'
 import { UserProfile } from './pages/UserProfile'
 import { Welcome } from './pages/Welcome'
 import { Layout } from './components/Layout'
+import Login from './pages/Login';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/userprofile" element={<UserProfile/>}/>
         <Route path="/car/:carNickname/maintenance" element={<CarProfile/>}/>
       </Route>
+      <Route path="/login" element={<Login />} />
     </Routes>
    </Router>
   )
