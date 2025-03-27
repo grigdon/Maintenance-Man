@@ -1,10 +1,8 @@
-using System.Runtime.InteropServices;
-
 namespace CarMaintenance.Api.Models
 {
     public class Car
     {
-        public Guid Id { get; set; } = new Guid();
+        public Guid Id { get; set; }
         public Guid UserId { get; set; }
         public string? Nickname { get; set; }
         public int Year { get; set; }
@@ -14,12 +12,25 @@ namespace CarMaintenance.Api.Models
         public string? Engine { get; set; }
         public string? Transmission { get; set; }
         
+        // Timestamps
+        public DateTime CreatedOn { get; set; }
+        public DateTime ModifiedOn { get; set; }
+        
         // Maintenance items for car
         public List<MaintenanceItem>? MaintenanceItems { get; set; }
-        public Car() { }
+
+        // Default constructor
+        public Car()
+        {
+            Id = Guid.NewGuid();
+            CreatedOn = DateTime.UtcNow;
+            ModifiedOn = DateTime.UtcNow;
+        }
+        
+        // Copy constructor
         public Car(Car c)
         {
-            Id = c.Id;
+            Id = Guid.NewGuid();
             UserId = c.UserId;
             Nickname = c.Nickname;
             Year = c.Year;
@@ -28,8 +39,10 @@ namespace CarMaintenance.Api.Models
             Trim = c.Trim;
             Engine = c.Engine;
             Transmission = c.Transmission;
-            MaintenanceItems = c.MaintenanceItems;
+            CreatedOn = c.CreatedOn;
+            ModifiedOn = c.ModifiedOn;
+            MaintenanceItems = c.MaintenanceItems?.Select(i =>
+                new MaintenanceItem(i) { CarId = this.Id }).ToList();
         }
     }
 }
-

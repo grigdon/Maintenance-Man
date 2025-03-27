@@ -4,6 +4,7 @@ namespace CarMaintenance.Api.Models
     {
         public string? Content { get; set; }
         
+        // Constructors
         public Query() { }
         public Query(string content)
         {
@@ -11,4 +12,3 @@ namespace CarMaintenance.Api.Models
         }
     }
 }
-

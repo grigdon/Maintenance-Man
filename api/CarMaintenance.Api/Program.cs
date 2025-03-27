@@ -1,3 +1,7 @@
+using CarMaintenance.Api.Data;
+using CarMaintenance.Api.Enterprise;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add CORS services
@@ -13,9 +17,15 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Dependency Injection for CarDbContext and CarEC
+
+builder.Services.AddDbContext<CarDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<CarEC>();
 
 var app = builder.Build();
 

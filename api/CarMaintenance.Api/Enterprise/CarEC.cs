@@ -1,85 +1,82 @@
-using CarMaintenance.Api.Database;
 using CarMaintenance.Api.Models;
+using CarMaintenance.Api.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace CarMaintenance.Api.Enterprise
 {
     // Enterprise controller
-    // Acts as a middle-man between the database and the controller
-    // Provides readonly data-organizing functions for the controller
-    // Makes API calls in the controller simpler
+    // Acts as a middle-man between DbContext and the controller
     public class CarEC
     {
-        private readonly CarsFakeFileBase _filebase;
-
-        public CarEC()
+        private readonly CarDbContext _context;
+        
+        // Dependency Injection of CarDbContext
+        public CarEC(CarDbContext context)
         {
-            _filebase = CarsFakeFileBase.Current;
-        }
-
-        public IEnumerable<Car> Cars
-        {
-            get { return _filebase.Cars.Take(100).Select(c => new Car(c)); }
+            _context = context;
         }
         
-        // search for a car in the list of cars by object member variables in set:= {year, make, model, engine, transmission}
-        public IEnumerable<Car> Search(string query)
+        // Create Car
+        public async Task<Car> CreateCarAsync(Car car)
         {
-            string upperQuery = query?.ToUpper() ?? string.Empty;
-            
-            return _filebase.Cars
-                .Where(c => c.Year.ToString().Contains(upperQuery) ||
-                                c.Nickname.ToUpper().Contains(upperQuery) ||
-                                c.Make.ToUpper().Contains(upperQuery) ||
-                                c.Model.ToUpper().Contains(upperQuery) ||
-                                c.Trim.ToUpper().Contains(upperQuery) ||
-                                c.Engine.ToUpper().Contains(upperQuery) ||
-                                c.Transmission.ToUpper().Contains(upperQuery))
-                .Select(c => new Car
-                {
-                    Id = c.Id,
-                    Year = c.Year,
-                    Nickname = c.Nickname,
-                    Make = c.Make,
-                    Model = c.Model,
-                    Trim = c.Trim,
-                    Engine = c.Engine,
-                    Transmission = c.Transmission
-                })
-                .ToList();
+            _context.Add(car);
+            await _context.SaveChangesAsync();
+            return car;
         }
-
-        public Car GetById(Guid id)
+        
+        // Read all cars
+        public async Task<List<Car>> GetCarsAsync()
         {
-            var car = _filebase
-                .Cars
-                .FirstOrDefault(c => c.Id == id);
-            if (car != null)
-            {
-                return new Car(car);
-            }
-            return null;
+            return await _context.Cars.ToListAsync();
         }
-
-        public Car? DeleteById(Guid id)
+        
+        // Read car == car.id
+        public async Task<Car?> GetCarByIdAsync(Guid carId)
         {
-            var car = _filebase.Cars.FirstOrDefault(c => c.Id == id);
-            if (car != null)
-            {
-                _filebase.Cars.Remove(car);
-                return new Car(car);
-            }
-
-            return null;
+            return await _context.Cars.FirstOrDefaultAsync(c => c.Id == carId);
         }
-
-        public Car? AddOrUpdate(Car? car)
+        
+        // Read car == user.id
+        public async Task<Car?> GetCarByUserIdAsync(Guid userId)
         {
-            if (car != null)
+            return await _context.Cars.FirstOrDefaultAsync(c => c.UserId == userId);
+        }
+        
+        // Update car
+        public async Task<Car?> UpdateCarAsync(Guid id, Car updatedCar)
+        {
+            var existingCar = await _context.Cars.FindAsync(id);
+
+            if (existingCar == null)
             {
                 return null;
             }
+            
+            // Update properties
+            existingCar.Nickname = updatedCar.Nickname;
+            existingCar.Year = updatedCar.Year;
+            existingCar.Make = updatedCar.Make;
+            existingCar.Model = updatedCar.Model;
+            existingCar.Trim = updatedCar.Trim;
+            existingCar.Engine = updatedCar.Engine;
+            existingCar.Transmission = updatedCar.Transmission;
+            existingCar.ModifiedOn = DateTime.UtcNow;
 
-            return _filebase.AddOrUpdateCar(new Car(car));
+            await _context.SaveChangesAsync();
+            return existingCar;
+        }
+        
+        // Delete a car
+        public async Task<bool> DeleteCarAsync(Guid id)
+        {
+            var car = await _context.Cars.FindAsync(id);
+            
+            if (car == null)
+                return false;
+
+            _context.Cars.Remove(car);
+            await _context.SaveChangesAsync();
+            return true;
         }
     }
 }
