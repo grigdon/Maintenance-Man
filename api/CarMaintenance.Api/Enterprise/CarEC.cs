@@ -28,21 +28,27 @@ namespace CarMaintenance.Api.Enterprise
             
             return _filebase.Cars
                 .Where(c => c.Year.ToString().Contains(upperQuery) ||
+                                c.Nickname.ToUpper().Contains(upperQuery) ||
                                 c.Make.ToUpper().Contains(upperQuery) ||
                                 c.Model.ToUpper().Contains(upperQuery) ||
+                                c.Trim.ToUpper().Contains(upperQuery) ||
                                 c.Engine.ToUpper().Contains(upperQuery) ||
                                 c.Transmission.ToUpper().Contains(upperQuery))
                 .Select(c => new Car
                 {
                     Id = c.Id,
                     Year = c.Year,
+                    Nickname = c.Nickname,
                     Make = c.Make,
-                    Model = c.Model
+                    Model = c.Model,
+                    Trim = c.Trim,
+                    Engine = c.Engine,
+                    Transmission = c.Transmission
                 })
                 .ToList();
         }
 
-        public Car GetById(int id)
+        public Car GetById(Guid id)
         {
             var car = _filebase
                 .Cars
@@ -51,11 +57,10 @@ namespace CarMaintenance.Api.Enterprise
             {
                 return new Car(car);
             }
-            
             return null;
         }
 
-        public Car? DeleteById(int id)
+        public Car? DeleteById(Guid id)
         {
             var car = _filebase.Cars.FirstOrDefault(c => c.Id == id);
             if (car != null)

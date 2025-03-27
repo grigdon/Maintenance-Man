@@ -1,14 +1,17 @@
 using CarMaintenance.Api.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarMaintenance.Api.Database
 {
     public class UsersFakeFileBase
     {
-        private static object _lock = new object();
+        private static readonly object _lock = new object();
         private static UsersFakeFileBase? _instance;
         private List<User> _users;
         
-        // calls private data member
+        // Calls private data member
         public List<User> Users
         {
             get { return _users; }
@@ -25,9 +28,8 @@ namespace CarMaintenance.Api.Database
                     {
                         _instance = new UsersFakeFileBase();
                     }
+                    return _instance;
                 }
-    
-                return _instance;
             }
         }
     
@@ -37,39 +39,26 @@ namespace CarMaintenance.Api.Database
             {
                 new User()
                 {
-                    Id = 1,
+                    Id = Guid.NewGuid(),
                     Name = "Gabe Rigdon",
                     Email = "gabe@email.com",
-                    Password = "secure_password_here",
+                    Password = "secure*password_here",
                 },
                 new User()
                 {
-                    Id = 2,
+                    Id = Guid.NewGuid(),
                     Name = "Joab Temotio",
                     Email = "joab@email.com",
                     Password = "secure_password_here",
                 },
                 new User()
                 {
-                    Id = 3,
+                    Id = Guid.NewGuid(),
                     Name = "Jack Hyland",
                     Email = "jack@email.com",
                     Password = "secure_password_here",
                 },
             };
-        }
-        
-        // Tracks the greatest Id in the list of Users
-        private int LastKey
-        {
-            get
-            {
-                if (Users.Any())
-                {
-                    return Users.Select(u => u.Id).Max();
-                }
-                return 0;
-            }
         }
         
         public User? AddOrUpdateUser(User? user)
@@ -78,26 +67,29 @@ namespace CarMaintenance.Api.Database
             {
                 return null;
             }
-    
-            bool isAdd = false;
-            if (user.Id <= 0)
+
+            // Check if the user already exists
+            var existingUser = _users.FirstOrDefault(u => u.Id == user.Id);
+
+            if (existingUser == null)
             {
-                user.Id = LastKey + 1;
-                isAdd = true;
+                // If user doesn't exist, assign a new GUID and add to the list
+                user.Id = Guid.NewGuid();
+                _users.Add(user);
             }
-    
-            if (isAdd)
+            else
             {
-                Users.Add(user);
+                // If user exists, update its properties
+                int index = _users.IndexOf(existingUser);
+                _users[index] = user;
             }
-    
+
             return user;
         }
+        
+        public User? GetUserById(Guid id)
+        {
+            return _users.FirstOrDefault(u => u.Id == id);
+        }
     }
-
 }
-
-
-
-      
-   

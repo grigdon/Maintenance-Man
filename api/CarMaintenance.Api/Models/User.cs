@@ -2,10 +2,13 @@ namespace CarMaintenance.Api.Models
 {
     public class User
     {
-        public int Id { get; set; }
+        public Guid Id { get; set; } = new Guid();
         public string? Name { get; set; }
         public string? Email { get; set; }
         public string? Password { get; set; }
+        
+        // Cars owned by user
+        public List<Car>? Cars { get; set; }
 
         public User() { }
         public User(User u)
@@ -14,6 +17,7 @@ namespace CarMaintenance.Api.Models
             Name = u.Name;
             Email = u.Email;
             Password = u.Password;
+            Cars = u.Cars;
         }
     }
 }

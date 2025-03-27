@@ -38,7 +38,7 @@ namespace CarMaintenance.Api.Enterprise
                 .ToList();
         }
 
-        public User GetById(int id)
+        public User GetById(Guid id)
         {
             var user = _filebase
                 .Users
@@ -51,7 +51,7 @@ namespace CarMaintenance.Api.Enterprise
             return null;
         }
 
-        public User? DeleteById(int id)
+        public User? DeleteById(Guid id)
         {
             var user = _filebase.Users.FirstOrDefault(c => c.Id == id);
             if (user != null)

@@ -1,94 +1,90 @@
 using CarMaintenance.Api.Models;
-
-// this class uses a singleton pattern for storing car objects in a list of type List<Car> 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace CarMaintenance.Api.Database
 {
     public class CarsFakeFileBase
     {
-        // makes singleton thread safe
-        private static object _lock = new object();
+        // Makes singleton thread safe
+        private static readonly object _lock = new object();
         private static CarsFakeFileBase? _instance;
         private List<Car> _cars;
         
-        // calls private data member
+        // Calls private data member
         public List<Car> Cars
         {
             get { return _cars; }
             set { _cars = value; }
         }
 
-        // singleton instance of CarsFakeFileBase 
+        // Singleton instance of CarsFakeFileBase 
         public static CarsFakeFileBase Current
         {
             get
             {
                 lock (_lock)
                 {
-                    if(_instance == null)
+                    if (_instance == null)
                     {
                         _instance = new CarsFakeFileBase();
                     }
+                    return _instance;
                 }
-                return _instance;
             }
         }
         
-        // where singleton data is stored (private member) with pre-defined objects
+        // Where singleton data is stored (private member) with pre-defined objects
         private CarsFakeFileBase()
         {
             _cars = new List<Car>()
             {
                 new Car()
                 {
-                    Id = 1,
+                    Id = Guid.NewGuid(),
+                    Nickname = "Gabe's Sedan",
                     Year = 2008,
                     Make = "Toyota",
                     Model = "Camry",
+                    Trim = "XLE",
                     Engine = "v6",
                     Transmission = "6-speed"
                 },
                 new Car()
                 {
-                    Id = 2,
+                    Id = Guid.NewGuid(),
+                    Nickname = "Dad's Truck",
                     Year = 2006,
                     Make = "Toyota",
                     Model = "Tundra",
+                    Trim = "SRS",
                     Engine = "v6",
                     Transmission = "5-speed"
                 },
                 new Car()
                 {
-                    Id = 3,
+                    Id = Guid.NewGuid(),
+                    Nickname = "Mom's SUV",
                     Year = 2015,
                     Make = "Toyota",
                     Model = "Highlander",
+                    Trim = "XLE",
                     Engine = "v6",
                     Transmission = "6-speed"
                 },
                 new Car()
                 {
-                    Id = 4,
+                    Id = Guid.NewGuid(),
+                    Nickname = "Tate's SUV",
                     Year = 2004,
-                    Make = "Make",
+                    Make = "Lexus",
                     Model = "LX470",
+                    Trim = "UL",
                     Engine = "v8",
                     Transmission = "5-speed"
                 }
             };
-        }
-        
-        // Tracks the greatest Id in the list of Cars
-        private int LastKey
-        {
-            get
-            {
-                if (Cars.Any())
-                {
-                    return Cars.Select(c => c.Id).Max();
-                }
-                return 0;
-            }
         }
         
         public Car? AddOrUpdateCar(Car? car)
@@ -98,20 +94,28 @@ namespace CarMaintenance.Api.Database
                 return null;
             }
 
-            bool isAdd = false;
-            if (car.Id <= 0)
-            {
-                car.Id = LastKey + 1;
-                isAdd = true;
-            }
+            // Check if the car already exists
+            var existingCar = _cars.FirstOrDefault(c => c.Id == car.Id);
 
-            if (isAdd)
+            if (existingCar == null)
             {
-                Cars.Add(car);
+                // If car doesn't exist, assign a new GUID and add to the list
+                car.Id = Guid.NewGuid();
+                _cars.Add(car);
+            }
+            else
+            {
+                // If car exists, update its properties
+                int index = _cars.IndexOf(existingCar);
+                _cars[index] = car;
             }
 
             return car;
         }
+        
+        public Car? GetCarById(Guid id)
+        {
+            return _cars.FirstOrDefault(c => c.Id == id);
+        }
     }
 }
-        

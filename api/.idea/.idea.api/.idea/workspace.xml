@@ -7,15 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/CarItem.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/CarItem.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/data/cars.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/data/cars.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/Home.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/Home.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/UserProfile.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/UserProfile.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/types/car.ts" beforeDir="false" />
-    </list>
+    <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

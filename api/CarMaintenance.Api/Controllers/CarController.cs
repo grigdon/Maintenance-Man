@@ -22,13 +22,13 @@ namespace CarMaintenance.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public Car? GetById(int id)
+        public Car? GetById(Guid id)
         {
             return new CarEC().GetById(id);
         }
 
         [HttpDelete("{id}")]
-        public Car? DeleteById(int id)
+        public Car? DeleteById(Guid id)
         {
             return new CarEC().DeleteById(id);
         }
