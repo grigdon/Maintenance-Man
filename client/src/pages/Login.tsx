@@ -12,10 +12,9 @@ const Login = () => {
 
         //Current default username/password is 'root'/0000
         if (username === "root" && password === "0000") {
-            
             navigate("/home");
         } else {
-            alert("Invalid username or password"); 
+            alert("Invalid username or password");
         }
     };
 
@@ -23,6 +22,7 @@ const Login = () => {
         <div className="login-container">
             <form className="login-form" onSubmit={handleSubmit}>
                 <h2>Login</h2>
+
                 <div className="form-group">
                     <label htmlFor="username">Username</label>
                     <input
@@ -34,6 +34,7 @@ const Login = () => {
                         required
                     />
                 </div>
+
                 <div className="form-group">
                     <label htmlFor="password">Password</label>
                     <input
@@ -45,11 +46,17 @@ const Login = () => {
                         required
                     />
                 </div>
+
                 <button type="submit" className="btn btn-login">Login</button>
+            
+
+            {/* 👇 Sign Up link here */}
+            <p className="signup-link">
+                Don’t have an account? <a href="#/signup">Sign Up</a>
+            </p>
             </form>
         </div>
     );
 };
 
 export default Login;
-

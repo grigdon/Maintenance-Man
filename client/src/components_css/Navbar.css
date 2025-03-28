@@ -132,4 +132,22 @@
     align-items: center; /* Aligns items vertically */
   }
 
-  
+.btn-signout {
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  margin-left: 0.5rem;
+  background-color: var(--color-btn-secondary-bg);
+  color: var(--color-text-primary);
+  border: 1px solid transparent;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  z-index: 1;
+}
+
+.btn-signout:hover {
+  box-shadow: 0 0 0 0.5px #f85149; /* thin red outline */
+  border-color: #f85149;         /* optional: solid red border on hover */
+}
+

@@ -71,3 +71,18 @@ label {
 .btn-login:hover {
     background-color: var(--color-btn-primary-hover-bg);
 }
+
+.signup-link {
+    margin-top: 1rem;
+    text-align: center;
+    color: var(--color-text-tertiary);
+}
+
+.signup-link a {
+    color: var(--color-accent-emphasis);
+    text-decoration: none;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
