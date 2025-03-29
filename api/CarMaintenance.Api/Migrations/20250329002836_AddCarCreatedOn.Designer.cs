@@ -3,6 +3,7 @@ using System;
 using CarMaintenance.Api.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace CarMaintenance.Api.Migrations
 {
     [DbContext(typeof(CarDbContext))]
-    partial class CarDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250329002836_AddCarCreatedOn")]
+    partial class AddCarCreatedOn
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
