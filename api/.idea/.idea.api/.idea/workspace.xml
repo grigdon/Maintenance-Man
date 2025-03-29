@@ -8,19 +8,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../client/src/pages/SignUp.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components/Navbar.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/components_css/Navbar.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/components_css/Navbar.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages/Login.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages/Login.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages_css/Home.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages_css/Home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages_css/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages_css/Login.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/pages_css/UserProfile.css" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/pages_css/UserProfile.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../client/src/services/ApiService.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../client/src/services/ApiService.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,23 +35,28 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "JTemotio"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;JTemotio&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/grigdon/Maintenance-Man",
-    "accountId": "598616f3-4c71-4e40-b446-c88f6530ff9e"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/grigdon/Maintenance-Man&quot;,
+    &quot;accountId&quot;: &quot;598616f3-4c71-4e40-b446-c88f6530ff9e&quot;
   }
-}]]></component>
+}</component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/39d4ca1376e2af10d382c4808abea5b1154327b287141263d59bbc4c7ce062/IModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/9cd554875b9ca2d459b3245af8a4eaa7e0d115b89d7d35ea942184b628efcb/Type.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/a0b45f29f34f594814a7b1fbc25fe5ef3c18257956ed4f4fbfa68717db58/DbContext.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/d582665c4c70dc6224a59b4c6f4d832d8b492652574c7c380923d4b3e3567/RuntimeModel.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/e2f46cf7b208815c63e2fc34484d2310cdf1e193b15b3ec869fb88951e16d6/EntityReferenceMap.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/edb0de51b1d42de1f0965b28bdb0a37a43b1d4b158a79125753e6c5e964b24f7/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Data/CarDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Database/CarsFakeFileBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Database/UsersFakeFileBase.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Enterprise/CarEC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Enterprise/UserEC.cs" root0="FORCE_HIGHLIGHTING" />
@@ -88,25 +82,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;.NET Launch Settings Profile.CarMaintenance.Api: http.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.40425533&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;increment-2&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.keymap&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\Joab\\Documents\\Maintenance-Man\\client\\node_modules\\typescript\\lib&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    ".NET Launch Settings Profile.CarMaintenance.Api: http.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "XThreadsFramesViewSplitterKey": "0.40425533",
+    "git-widget-placeholder": "increment-2",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.keymap",
+    "ts.external.directory.path": "C:\\Users\\Joab\\Documents\\Maintenance-Man\\client\\node_modules\\typescript\\lib",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected=".NET Launch Settings Profile.CarMaintenance.Api: http">
     <configuration name="CarMaintenance.Api: IIS Express" type="LaunchSettings" factoryName=".NET Launch Settings Profile">
       <option name="LAUNCH_PROFILE_PROJECT_FILE_PATH" value="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" />
@@ -174,6 +168,7 @@
       <workItem from="1742843404220" duration="2252000" />
       <workItem from="1743085553794" duration="1376000" />
       <workItem from="1743087110430" duration="14618000" />
+      <workItem from="1743203681750" duration="2458000" />
     </task>
     <servers />
   </component>
@@ -222,6 +217,25 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs</url>
+          <line>24</line>
+          <properties documentPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" containingFunctionPresentation="Method 'CreateCar'">
+            <startOffsets>
+              <option value="679" />
+            </startOffsets>
+            <endOffsets>
+              <option value="729" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />

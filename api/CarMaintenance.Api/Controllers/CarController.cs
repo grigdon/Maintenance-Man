@@ -22,10 +22,6 @@ namespace CarMaintenance.Api.Controllers
         [HttpPost]
         public async Task<ActionResult<Car>> CreateCar([FromBody] Car car)
         {
-            if (car == null)
-            {
-                return BadRequest();
-            }
             var createdCar = await _carEC.CreateCarAsync(car);
             return CreatedAtAction(nameof(GetCarByCarId), new { id = createdCar.Id }, createdCar);
         }
