@@ -8,12 +8,17 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add CORS services
+// Add CORS services with updated origins for production
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowReactApp", builder => 
         builder
-            .WithOrigins("http://localhost:5173", "http://localhost:5191") 
+            .WithOrigins(
+                "http://localhost:5173", 
+                "http://localhost:5191",
+                "https://gitgarage.com",
+                "https://www.gitgarage.com"
+            ) 
             .AllowAnyMethod()
             .AllowAnyHeader()
     );
@@ -21,8 +26,13 @@ builder.Services.AddCors(options =>
 
 // Add services to the container.
 builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+
+// Only add Swagger in development environment
+if (builder.Environment.IsDevelopment())
+{
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+}
 
 // Dependency Injection for EntityDbContext and ECs
 builder.Services.AddDbContext<EntityDbContext>(options =>
@@ -44,7 +54,8 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuerSigningKey = true,
             IssuerSigningKey = new SymmetricSecurityKey(
-                Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"])),
+                Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"] ?? 
+                                       throw new InvalidOperationException("JWT key is not configured"))),
             ValidateIssuer = false,
             ValidateAudience = false,
             ClockSkew = TimeSpan.Zero
@@ -59,15 +70,19 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+else
+{
+    // In production, use HTTPS redirection and enable security headers
+    app.UseHttpsRedirection();
+    
+    // Add HSTS middleware for enhanced security in production
+    app.UseHsts(); // HTTP Strict Transport Security
+}
 
 // Add CORS middleware
 app.UseCors("AllowReactApp");
 
-// *** Disabled for development **
-// *** This should be re-enabled for launch ***
-// app.UseHttpsRedirection();
-
-// Add authentication middleware - this line is crucial!
+// Add authentication middleware
 app.UseAuthentication();
 app.UseAuthorization();
 
