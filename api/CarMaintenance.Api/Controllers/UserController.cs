@@ -18,14 +18,6 @@ namespace UserMaintenance.Api.Controllers
             _userEc = userEc;
         }
         
-        // Create User
-        [HttpPost]
-        public async Task<ActionResult<UserDto>> CreateUser([FromBody] UserDto user)
-        {
-            var createdUser = await _userEc.CreateUserAsync(user);
-            return CreatedAtAction(nameof(GetUserByUserId), new { id = createdUser.Id }, createdUser);
-        }
-        
         // Read list of users
         [HttpGet]
         public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()

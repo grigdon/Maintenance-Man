@@ -1,7 +1,10 @@
 using CarMaintenance.Api.Data;
 using CarMaintenance.Api.Enterprise;
+using CarMaintenance.Api.Services;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,14 +24,32 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Dependency Injection for CarDbContext and CarEC
-
+// Dependency Injection for EntityDbContext and ECs
 builder.Services.AddDbContext<EntityDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+// Register AuthService
+builder.Services.AddScoped<IAuthService, AuthenticationService>();
+
+// Register Enterprise Components
 builder.Services.AddScoped<UserEc>();
 builder.Services.AddScoped<CarEc>();
 builder.Services.AddScoped<MaintenanceItemEc>();
+
+// Configure JWT Authentication
+builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(options =>
+    {
+        options.TokenValidationParameters = new TokenValidationParameters
+        {
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(
+                Encoding.ASCII.GetBytes(builder.Configuration["Jwt:Key"])),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+            ClockSkew = TimeSpan.Zero
+        };
+    });
 
 var app = builder.Build();
 
@@ -44,9 +65,10 @@ app.UseCors("AllowReactApp");
 
 // *** Disabled for development **
 // *** This should be re-enabled for launch ***
-
 // app.UseHttpsRedirection();
 
+// Add authentication middleware - this line is crucial!
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
