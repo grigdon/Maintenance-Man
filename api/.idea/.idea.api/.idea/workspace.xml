@@ -9,7 +9,6 @@
   <component name="ChangeListManager">
     <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Migrations/CarDbContextModelSnapshot.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Migrations/CarDbContextModelSnapshot.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,12 +62,7 @@
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/SourcesCache/edb0de51b1d42de1f0965b28bdb0a37a43b1d4b158a79125753e6c5e964b24f7/StateManager.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/UserController.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Data/CarDbContext.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Database/UsersFakeFileBase.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Enterprise/CarEC.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Enterprise/UserEC.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Models/Car.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Models/Query.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Models/User.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/CarMaintenance.Api/appsettings.json" root0="FORCE_HIGHLIGHTING" />
@@ -103,7 +97,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.keymap",
+    "settings.editor.selected.configurable": "CodeLensConfigurable",
     "ts.external.directory.path": "C:\\Users\\Joab\\Documents\\Maintenance-Man\\client\\node_modules\\typescript\\lib",
     "vue.rearranger.settings.migration": "true"
   }
@@ -176,6 +170,12 @@
       <workItem from="1743085553794" duration="1376000" />
       <workItem from="1743087110430" duration="14618000" />
       <workItem from="1743203681750" duration="4160000" />
+      <workItem from="1743272719452" duration="642000" />
+      <workItem from="1743286174337" duration="1979000" />
+      <workItem from="1743347369324" duration="3286000" />
+      <workItem from="1743368637534" duration="10037000" />
+      <workItem from="1743392163153" duration="380000" />
+      <workItem from="1743426061245" duration="8744000" />
     </task>
     <servers />
   </component>
@@ -224,25 +224,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs</url>
-          <line>24</line>
-          <properties documentPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/CarController.cs" containingFunctionPresentation="Method 'CreateCar'">
-            <startOffsets>
-              <option value="679" />
-            </startOffsets>
-            <endOffsets>
-              <option value="729" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
