@@ -1,6 +1,7 @@
 using CarMaintenance.Api.Data;
 using CarMaintenance.Api.Enterprise;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -22,10 +23,12 @@ builder.Services.AddSwaggerGen();
 
 // Dependency Injection for CarDbContext and CarEC
 
-builder.Services.AddDbContext<CarDbContext>(options =>
+builder.Services.AddDbContext<EntityDbContext>(options =>
     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-builder.Services.AddScoped<CarEC>();
+builder.Services.AddScoped<UserEc>();
+builder.Services.AddScoped<CarEc>();
+builder.Services.AddScoped<MaintenanceItemEc>();
 
 var app = builder.Build();
 

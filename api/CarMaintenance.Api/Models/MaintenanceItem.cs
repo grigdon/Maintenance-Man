@@ -1,36 +1,22 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace CarMaintenance.Api.Models
 {
     public class MaintenanceItem
     {
-        public Guid Id { get; set; }
-        public Guid CarId { get; set; }
-        public Car Car { get; set; }
-        public string? Description { get; set; }
-        public DateTime Date { get; set; }
-        public Decimal Cost { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid(); // global identifier
+        public Guid CarId { get; set; } // upstream identifier tag
         
-        // Timestamps
-        public DateTime CreatedOn { get; set; }
+        [StringLength(200)] // This is a filler value for now
+        public string? Description { get; set; }
+
+        public DateTime Date { get; set; }
+        public decimal Cost { get; set; }
+        
+        public DateTime CreatedOn { get; init; } = DateTime.UtcNow;
         public DateTime ModifiedOn { get; set; }
-
-        public MaintenanceItem()
-        {
-            Id = Guid.NewGuid();
-            CreatedOn = DateTime.UtcNow;
-            ModifiedOn = DateTime.UtcNow;
-        }
-
-        public MaintenanceItem(MaintenanceItem m)
-        {
-            Id = Guid.NewGuid();
-            CarId = m.CarId;
-            Car = m.Car;
-            Description = m.Description;
-            Date = m.Date;
-            Cost = m.Cost;
-            CreatedOn = DateTime.UtcNow;
-            ModifiedOn = DateTime.UtcNow;
-        }
+        
+        public virtual Car? Car { get; set; } // upstream navigational identifier
     }
 }
 

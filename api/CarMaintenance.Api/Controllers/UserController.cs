@@ -1,49 +1,61 @@
+using CarMaintenance.Api.DTOs;
 using CarMaintenance.Api.Enterprise;
-using CarMaintenance.Api.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace CarMaintenance.Api.Controllers
+namespace UserMaintenance.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
     public class UserController : ControllerBase
     {
         private readonly ILogger<UserController> _logger;
+        private readonly UserEc _userEc;
 
-        public UserController(ILogger<UserController> logger)
+        // Dependency injection
+        public UserController(ILogger<UserController> logger, UserEc userEc)
         {
             _logger = logger;
+            _userEc = userEc;
         }
-
-        [HttpGet]
-        public IEnumerable<User> Get()
-        {
-            return new UserEC().Users;
-        }
-
-        [HttpGet("{id}")]
-        public User? GetById(Guid id)
-        {
-            return new UserEC().GetById(id);
-        }
-
-        [HttpDelete("{id}")]
-        public User? DeleteById(Guid id)
-        {
-            return new UserEC().DeleteById(id);
-        }
-
-        [HttpPost("Search")]
-        public List<User> Search([FromBody] Query query)
-        {
-            return new UserEC().Search(query?.Content ?? string.Empty)?.ToList() ?? new List<User>();
-        }
-
+        
+        // Create User
         [HttpPost]
-        public User? AddOrUpdate([FromBody] User? user)
+        public async Task<ActionResult<UserDto>> CreateUser([FromBody] UserDto user)
         {
-            return new UserEC().AddOrUpdate(user);
+            var createdUser = await _userEc.CreateUserAsync(user);
+            return CreatedAtAction(nameof(GetUserByUserId), new { id = createdUser.Id }, createdUser);
+        }
+        
+        // Read list of users
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<UserDto>>> GetUsers()
+        {
+            var users = await _userEc.GetAllUsersAsync();
+            return Ok(users);
+        }
+        
+        // Read user by userId
+        [HttpGet("{id:guid}")]
+        public async Task<ActionResult<UserDto>> GetUserByUserId(Guid id)
+        {
+            var user = await _userEc.GetUserByIdAsync(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
+        
+        // Delete user by userId
+        [HttpDelete("{id:guid}")]
+        public async Task<IActionResult> DeleteByUserId(Guid id)
+        {
+            var result = await _userEc.DeleteUserAsync(id);
+            if (!result)
+            {
+                return NotFound();
+            }
+            return NoContent();
         }
     }
 }
-

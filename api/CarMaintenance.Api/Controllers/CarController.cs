@@ -1,5 +1,5 @@
+using CarMaintenance.Api.DTOs;
 using Microsoft.AspNetCore.Mvc;
-using CarMaintenance.Api.Models;
 using CarMaintenance.Api.Enterprise;
 
 namespace CarMaintenance.Api.Controllers
@@ -9,10 +9,10 @@ namespace CarMaintenance.Api.Controllers
     public class CarController : ControllerBase
     {
         private readonly ILogger<CarController> _logger;
-        private readonly CarEC _carEC;
+        private readonly CarEc _carEC;
 
         // Dependency injection
-        public CarController(ILogger<CarController> logger, CarEC carEc)
+        public CarController(ILogger<CarController> logger, CarEc carEc)
         {
             _logger = logger;
             _carEC = carEc;
@@ -20,7 +20,7 @@ namespace CarMaintenance.Api.Controllers
         
         // Create car
         [HttpPost]
-        public async Task<ActionResult<Car>> CreateCar([FromBody] Car car)
+        public async Task<ActionResult<CarDto>> CreateCar([FromBody] CarDto car)
         {
             var createdCar = await _carEC.CreateCarAsync(car);
             return CreatedAtAction(nameof(GetCarByCarId), new { id = createdCar.Id }, createdCar);
@@ -28,15 +28,15 @@ namespace CarMaintenance.Api.Controllers
         
         // Read list of cars
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Car>>> GetCars()
+        public async Task<ActionResult<IEnumerable<CarDto>>> GetCars()
         {
-            var cars = await _carEC.GetCarsAsync();
+            var cars = await _carEC.GetAllCarsAsync();
             return Ok(cars);
         }
         
         // Read car by carId
         [HttpGet("{id:guid}")]
-        public async Task<ActionResult<Car>> GetCarByCarId(Guid id)
+        public async Task<ActionResult<CarDto>> GetCarByCarId(Guid id)
         {
             var car = await _carEC.GetCarByIdAsync(id);
             if (car == null)
@@ -48,19 +48,19 @@ namespace CarMaintenance.Api.Controllers
         
         // Read car by userId (using a distinct route)
         [HttpGet("user/{userId:guid}")]
-        public async Task<ActionResult<Car>> GetCarByUserId(Guid userId)
+        public async Task<ActionResult<CarDto>> GetCarByUserId(Guid userId)
         {
-            var car = await _carEC.GetCarByUserIdAsync(userId);
-            if (car == null)
+            var cars = await _carEC.GetCarsByUserIdAsync(userId);
+            if (cars == null || !cars.Any())
             {
                 return NotFound();
             }
-            return Ok(car);
+            return Ok(cars);
         }
         
         // Update car 
         [HttpPut("{id:guid}")]
-        public async Task<ActionResult<Car>> UpdateCarById(Guid id, [FromBody] Car car)
+        public async Task<ActionResult<CarDto>> UpdateCarById(Guid id, [FromBody] CarDto car)
         {
             if (car == null)
             {

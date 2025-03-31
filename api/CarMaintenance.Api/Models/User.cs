@@ -1,37 +1,23 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace CarMaintenance.Api.Models
 {
     public class User
     {
-        public Guid Id { get; set; }
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
+        public Guid Id { get; set; } = Guid.NewGuid(); // global user identifier
         
-        // Cars owned by user
-        public List<Car>? Cars { get; set; }
+        [StringLength(50)] // fixed length strings; can be reduced if necessary
+        public string? Name { get; init; }
         
-        // Timestamps
-        public DateTime CreatedOn { get; set; }
+        [StringLength(50)]
+        public string? Email { get; init; }
+        
+        [StringLength(50)]
+        public string? Password { get; init; }
+        
+        public DateTime CreatedOn { get; init; } = DateTime.UtcNow;
         public DateTime ModifiedOn { get; set; }
-
-        // Default Constructor
-        public User()
-        {
-            Id = Guid.NewGuid();
-            CreatedOn = DateTime.UtcNow;
-            ModifiedOn = DateTime.UtcNow;
-        }
         
-        // Copy Constructor
-        public User(User u)
-        {
-            Id = Guid.NewGuid();
-            Name = u.Name;
-            Email = u.Email;
-            Password = u.Password;
-            Cars = u.Cars;
-            CreatedOn = DateTime.UtcNow;
-            ModifiedOn = DateTime.UtcNow;
-        }
+        public virtual IEnumerable<Car>? Cars { get; set; } // downstream navigational property
     }
 }
