@@ -8,6 +8,5 @@ namespace CarMaintenance.Api.DTOs
         public string? Email { get; init; }
         
         public DateTime CreatedOn { get; init; }
-        public DateTime ModifiedOn { get; set; }
     }
 }

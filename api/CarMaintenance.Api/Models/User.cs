@@ -9,11 +9,16 @@ namespace CarMaintenance.Api.Models
         [StringLength(50)] // fixed length strings; can be reduced if necessary
         public string? Name { get; init; }
         
+        [Required]
+        [EmailAddress]
         [StringLength(50)]
         public string? Email { get; init; }
         
-        [StringLength(50)]
-        public string? Password { get; init; }
+        [Required]
+        public string? PasswordHash { get; set; }
+        
+        [Required]
+        public string? PasswordSalt { get; set; }
         
         public DateTime CreatedOn { get; init; } = DateTime.UtcNow;
         public DateTime ModifiedOn { get; set; }

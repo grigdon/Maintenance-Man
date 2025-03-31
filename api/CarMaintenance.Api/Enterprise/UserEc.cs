@@ -21,8 +21,7 @@ namespace CarMaintenance.Api.Enterprise
                 Id = user.Id,
                 Name = user.Name,
                 Email = user.Email,
-                CreatedOn = user.CreatedOn,
-                ModifiedOn = user.ModifiedOn
+                CreatedOn = user.CreatedOn
             };
         }
 
@@ -36,17 +35,6 @@ namespace CarMaintenance.Api.Enterprise
                 CreatedOn = dto.CreatedOn,
                 ModifiedOn = DateTime.UtcNow
             };
-        }
-        
-        // Create User
-        public async Task<UserDto> CreateUserAsync(UserDto userDto)
-        {
-            var user = MapUserDtoToUserEntity(userDto); 
-            
-            _context.Users.Add(user);
-            await _context.SaveChangesAsync();
-            
-            return MapUserToUserDto(user); 
         }
         
         // Read all users
