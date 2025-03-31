@@ -7,23 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/AuthenticationController.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Dtos/UserLoginDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Dtos/UserRegistrationDto.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/CarMaintenance.Api/Services/AuthenticationService.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.api/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/CarMaintenance.Api.csproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/UserController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Controllers/UserController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Dtos/UserDto.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Dtos/UserDto.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Enterprise/UserEc.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Enterprise/UserEc.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Migrations/20250331143606_InitialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Migrations/20250331143606_InitialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Migrations/EntityDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Models/User.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Models/User.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/Program.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CarMaintenance.Api/appsettings.json" beforeDir="false" afterPath="$PROJECT_DIR$/CarMaintenance.Api/appsettings.json" afterDir="false" />
-    </list>
+    <list default="true" id="38512c91-bde7-45d7-9b92-e5240a7512a6" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -190,7 +174,7 @@
       <workItem from="1743368637534" duration="10037000" />
       <workItem from="1743392163153" duration="380000" />
       <workItem from="1743426061245" duration="10248000" />
-      <workItem from="1743451615757" duration="6291000" />
+      <workItem from="1743451615757" duration="6633000" />
     </task>
     <servers />
   </component>
