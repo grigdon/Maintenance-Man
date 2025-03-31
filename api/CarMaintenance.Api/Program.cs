@@ -1,11 +1,34 @@
+using CarMaintenance.Api.Data;
+using CarMaintenance.Api.Enterprise;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+// Add CORS services
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp", builder => 
+        builder
+            .WithOrigins("http://localhost:5173", "http://localhost:5191") 
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+    );
+});
 
+// Add services to the container.
 builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
+// Dependency Injection for CarDbContext and CarEC
+
+builder.Services.AddDbContext<EntityDbContext>(options =>
+    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped<UserEc>();
+builder.Services.AddScoped<CarEc>();
+builder.Services.AddScoped<MaintenanceItemEc>();
 
 var app = builder.Build();
 
@@ -16,7 +39,13 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// Add CORS middleware
+app.UseCors("AllowReactApp");
+
+// *** Disabled for development **
+// *** This should be re-enabled for launch ***
+
+// app.UseHttpsRedirection();
 
 app.UseAuthorization();
 

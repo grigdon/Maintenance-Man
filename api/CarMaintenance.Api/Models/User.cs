@@ -1,20 +1,23 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace CarMaintenance.Api.Models
 {
     public class User
     {
-        public int Id { get; set; }
-        public string? Name { get; set; }
-        public string? Email { get; set; }
-        public string? Password { get; set; }
-
-        public User() { }
-        public User(User u)
-        {
-            Id = u.Id;
-            Name = u.Name;
-            Email = u.Email;
-            Password = u.Password;
-        }
+        public Guid Id { get; set; } = Guid.NewGuid(); // global user identifier
+        
+        [StringLength(50)] // fixed length strings; can be reduced if necessary
+        public string? Name { get; init; }
+        
+        [StringLength(50)]
+        public string? Email { get; init; }
+        
+        [StringLength(50)]
+        public string? Password { get; init; }
+        
+        public DateTime CreatedOn { get; init; } = DateTime.UtcNow;
+        public DateTime ModifiedOn { get; set; }
+        
+        public virtual IEnumerable<Car>? Cars { get; set; } // downstream navigational property
     }
 }
-
